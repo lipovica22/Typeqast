@@ -3,7 +3,7 @@ class linksRegistration {
         return cy.get("[class='page-title']")
     }
     Message() {
-        return cy.get("")
+        return cy.get("[class='page-title']").parent().find("div").eq(1)
     }
     RegisterAsCompany() {
         return cy.get("[id='RegisterAsCompany']")
@@ -14,8 +14,14 @@ class linksRegistration {
     Company() {
         return cy.get("[id='Company']")
     }
+    CompanyError() {
+        return cy.get("[data-valmsg-for='Company']").invoke('text')
+    }
     OIB() {
         return cy.get("[id='CompanyOIB']")
+    }
+    OIBError() {
+        return cy.get(".field-validation-error[data-valmsg-for='CompanyOIB']").invoke('text')
     }
     Email() {
         return cy.get("[id='CompanyEmail']")
@@ -29,14 +35,29 @@ class linksRegistration {
     CompanyAddress() {
         return cy.get("[id='CompanyAddress']")
     }
+    CompanyAddressError() {
+        return cy.get(".field-validation-error[data-valmsg-for='CompanyAddress']").invoke('text')
+    }
     CompanyPostalCode() {
         return cy.get('[for="CompanyZipPostalCode"]').parent().find("[class='ui-autocomplete-input']")
+    }
+    CompanyPostalCodeError() {
+        return cy.get(".field-validation-error[data-valmsg-for='CompanyZipPostalCode']").invoke('text')
     }
     CompanyPostalCodeList() {
         return cy.get("[class='ui-corner-all']").contains("10040 ZAGREB - DUBRAVA, Croatia")
     }
+    CompanyCity() {
+        return cy.get("[class='ui-corner-all']").contains("10040 ZAGREB - DUBRAVA, Croatia")
+    }
+    CompanyCityError() {
+        return cy.get(".field-validation-error[data-valmsg-for='CompanyCity']").invoke('text')
+    }
     CompanyCountryId_dropdown() {
         return cy.get("[id='CompanyCountryId_dropdown']")
+    }
+    CompanyCountryId_dropdownError() {
+        return cy.get(".field-validation-error[data-valmsg-for='CompanyCountryId']").invoke('text')
     }
     Male() {
         return cy.get("[id='gender-male']")
@@ -47,8 +68,14 @@ class linksRegistration {
     FirstName() {
         return cy.get("[id='FirstName']")
     }
+    FirstNameError() {
+        return cy.get("span[for='FirstName']").invoke('text')
+    }
     LastName() {
         return cy.get("[id='LastName']")
+    }
+    LastNameError() {
+        return cy.get("span[for='LastName']").invoke('text')
     }
     DateOfBirthDay() {
         return cy.get("[name='DateOfBirthDay']")
@@ -62,22 +89,29 @@ class linksRegistration {
     Email() {
         return cy.get("[id='Email']")
     }
+    EmailError() {
+        return cy.get("span[for='Email']").invoke('text')
+    }
     StreetAddress() {
         return cy.get("[id='StreetAddress']")
     }
+    
     PostalCode() {
         return cy.get('[for="ZipPostalCode"]').parent().find("[class='ui-autocomplete-input']")
     }
     PostalCodeList() {
-        return cy.get("[class='ui-corner-all']").contains("10000 ZAGREB, Croatia")
+        return cy.get("[class='ui-corner-all']")
     }
     City() {
-        return cy.xpath("[id='fd7e5f71-2d18-4767-bf79-aa86f3f42c40']")
+        return cy.get('[for="City"]').parent().find("[class='ui-autocomplete-input']")
+    }
+    CitySelected() {
+        return cy.get('[id="City"]').invoke('val')
     }
     CityList() {
-        return cy.get("ui-id-1")
+        return cy.get("[class='ui-corner-all']").contains("51000 RIJEKA, Croatia")
     }
-    Country() {
+    CountryList() {
         return cy.get("[id='CountryId_dropdown']")
     }
     Phone() {
@@ -92,8 +126,26 @@ class linksRegistration {
     ConfirmPassword() {
         return cy.get("[id='ConfirmPassword']")
     }
+    PasswordError() {
+        return cy.get("span[for='Password']").invoke('text')
+    }
+    ConfirmPasswordError() {
+        return cy.get("span[for='ConfirmPassword']").invoke('text')
+    }
     Submit() {
         return cy.get("[id='register-button']")
+    }
+    Error() {
+        return cy.get("[class='validation-summary-errors']").invoke('text')
+    }
+    URL() {
+        return cy.get("[class='mr-12px leading-normal max-w-100% text-indigo-500 self-center hocus-link-default truncate']")
+    }
+    Confirmation() {
+        return cy.get("[class='result']").invoke('text')
+    }
+    Continue() {
+        return cy.get("[class='button-1 register-continue-button']")
     }
 }
 export default linksRegistration
