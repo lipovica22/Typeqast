@@ -1,6 +1,6 @@
 class LOB {
     lifeB() {
-        return cy.get(".ico_life")
+        return cy.get("[class='box_product hvr-grow ico_life']")
     }
     householdB() {
         return cy.get("[class='box_product hvr-grow ico_property']")

@@ -9,5 +9,6 @@ class login {
     submit() {
         return cy.get('button[value="login"]')
     }
+      
 }
 export default login
